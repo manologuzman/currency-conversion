@@ -1,0 +1,40 @@
+# Dependencias
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Directorios de compilación
+/dist
+/build
+
+# Variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+logs
+*.log
+
+# Directorio de cobertura de pruebas
+/coverage
+
+# Archivos de IDE
+/.idea
+/.vscode
+*.code-workspace
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Archivos temporales
+/.tmp
+/temp 
