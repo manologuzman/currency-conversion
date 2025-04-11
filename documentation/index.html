@@ -94,7 +94,7 @@
 <p><a href="https://github.com/nestjs/nest">Nest</a> framework TypeScript starter repository.</p>
 <h2>License</h2>
 <p>Nest is <a href="https://github.com/nestjs/nest/blob/master/LICENSE">MIT licensed</a>.</p>
-<h1>Microservicio de Conversión de Monedas</h1>
+<h1>Microservicio de Conversión de Monedas BBVA</h1>
 <p>Este microservicio permite convertir cantidades de una moneda a otra utilizando códigos ISO 4217,que realiza la conversión de divisas obteniendo la información de un servicio externo. </p>
 <p><a href="http://api.exchangeratesapi.io/v1/latest">http://api.exchangeratesapi.io/v1/latest</a></p>
 <p>Está construido con NestJS siguiendo una arquitectura hexagonal.</p>
@@ -152,9 +152,9 @@ docker-compose up -d</code></pre></div><h2>Endpoints</h2>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-none">http://localhost:3000/api</code></pre></div><h2>Arquitectura</h2>
 <p>El proyecto sigue una arquitectura hexagonal (puertos y adaptadores) con tres capas principales:</p>
 <ul>
-<li><strong>Dominio</strong>: Contiene las entidades, interfaces y reglas de negocio</li>
-<li><strong>Aplicación</strong>: Contiene los casos de uso y orquesta el flujo de datos</li>
-<li><strong>Infraestructura</strong>: Contiene los adaptadores para comunicarse con sistemas externos</li>
+<li><strong>Domain</strong>: Contiene las entidades, interfaces y reglas de negocio</li>
+<li><strong>Aplication</strong>: Contiene los casos de uso y orquesta el flujo de datos</li>
+<li><strong>Infraestructure</strong>: Contiene los adaptadores para comunicarse con sistemas externos</li>
 </ul>
 <h2>Pruebas</h2>
 <b>Example :</b><div><pre class="line-numbers"><code class="language-bash"># Ejecutar pruebas unitarias

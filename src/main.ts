@@ -10,6 +10,10 @@ async function bootstrap() {
 
   // Configurar carpeta de archivos estáticos
   app.useStaticAssets(join(__dirname, '..', 'public'));
+  // Servir la documentación generada por Compodoc
+  app.useStaticAssets(join(__dirname, '..', 'documentation'), {
+    prefix: '/documentation',
+  });
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -35,6 +39,9 @@ async function bootstrap() {
   await app.listen(process.env.PORT || 3000);
   console.log(
     `La aplicación Conversión de Monedas BBVA está ejecutándose en: ${await app.getUrl()}`,
+  );
+  console.log(
+    `Documentación disponible en: ${await app.getUrl()}/documentation/`,
   );
 }
 bootstrap();
