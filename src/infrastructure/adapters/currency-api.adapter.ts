@@ -7,13 +7,13 @@ import { ExternalApiException } from '../../domain/exceptions/currency-conversio
 
 interface CurrencyApiResponse {
   success: boolean;
+  timestamp: number;
+  base: string;
+  date: string;
+  rates: Record<string, number>;
   error?: {
     info?: string;
   };
-  info?: {
-    rate: number;
-  };
-  result?: number;
 }
 
 @Injectable()
@@ -40,33 +40,32 @@ export class CurrencyApiAdapter implements CurrencyConversionRepository {
       const response = await axios.get<CurrencyApiResponse>(apiUrl, {
         params: {
           access_key: apiKey,
-          // base: sourceCurrency, // `No se envia por que el api tiene limite de uso`
           symbols: destinationCurrency,
-          // amount, // `No se envia por que el api tiene limite de uso`
         },
       });
 
       const data = response.data;
 
-      console.log(data);
-
       if (!data.success) {
         throw new ExternalApiException(data.error?.info || 'Error desconocido');
       }
 
-      if (!data.info?.rate || !data.result) {
+      if (!data.rates || !data.rates[destinationCurrency]) {
         throw new ExternalApiException(
-          'La respuesta de la API no contiene la información esperada',
+          'La respuesta de la API no contiene la tasa de conversión esperada',
         );
       }
 
+      const rate = data.rates[destinationCurrency];
+      const resultingAmount = amount * rate;
+
       return new CurrencyConversion(
         amount,
-        sourceCurrency,
+        data.base, // La moneda base según la respuesta de la API
         destinationCurrency,
-        data.info.rate,
-        data.result,
-        new Date(),
+        rate,
+        resultingAmount,
+        new Date(data.date),
       );
     } catch (error: any) {
       if (error instanceof ExternalApiException) {
