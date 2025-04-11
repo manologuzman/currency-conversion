@@ -17,7 +17,7 @@ describe('CurrencyConversionService', () => {
       providers: [
         CurrencyConversionService,
         {
-          provide: CurrencyConversionRepository,
+          provide: 'CurrencyConversionRepository',
           useValue: mockRepository,
         },
       ],
@@ -25,7 +25,7 @@ describe('CurrencyConversionService', () => {
 
     service = module.get<CurrencyConversionService>(CurrencyConversionService);
     repository = module.get<CurrencyConversionRepository>(
-      CurrencyConversionRepository,
+      'CurrencyConversionRepository',
     );
   });
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { CurrencyConversionRepository } from '../../domain/interfaces/currency-conversion.repository';
 import { CurrencyConversion } from '../../domain/models/currency-conversion.model';
 import { CurrencyConversionException } from '../../domain/exceptions/currency-conversion.exception';
@@ -6,6 +6,7 @@ import { CurrencyConversionException } from '../../domain/exceptions/currency-co
 @Injectable()
 export class CurrencyConversionService {
   constructor(
+    @Inject('CurrencyConversionRepository')
     private readonly currencyConversionRepository: CurrencyConversionRepository,
   ) {}
 
@@ -31,15 +32,23 @@ export class CurrencyConversionService {
     }
 
     try {
-      return (await this.currencyConversionRepository.convert(
+      return await this.currencyConversionRepository.convert(
         amount,
         sourceCurrency.toUpperCase(),
         destinationCurrency.toUpperCase(),
-      )) as CurrencyConversion;
+      );
     } catch (error: any) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const errorMessage =
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        typeof error.message === 'string' ? error.message : 'Error desconocido';
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const statusCode =
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        typeof error.statusCode === 'number' ? error.statusCode : 500;
       throw new CurrencyConversionException(
-        `Error al convertir moneda: ${error.message}`,
-        error.statusCode || 500,
+        `Error al convertir moneda: ${errorMessage}`,
+        Number(statusCode),
       );
     }
   }

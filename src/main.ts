@@ -15,7 +15,7 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('API de Conversión de Monedas')
+    .setTitle('API de Conversión de Monedas BBVA')
     .setDescription('API para convertir monedas utilizando códigos ISO 4217')
     .setVersion('1.0')
     .addBearerAuth()
@@ -25,6 +25,8 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT || 3000);
-  console.log(`La aplicación está ejecutándose en: ${await app.getUrl()}`);
+  console.log(
+    `La aplicación Conversión de Monedas BBVA está ejecutándose en: ${await app.getUrl()}`,
+  );
 }
 bootstrap();

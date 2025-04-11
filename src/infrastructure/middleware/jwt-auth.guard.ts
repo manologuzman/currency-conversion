@@ -16,7 +16,15 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     return super.canActivate(context);
   }
 
-  handleRequest(err, user, info) {
+  /* eslint-disable @typescript-eslint/no-unused-vars */
+  handleRequest<T extends { userId: string; username: string }>(
+    err: any,
+    user: T,
+    info: any,
+    context?: ExecutionContext,
+    status?: any,
+  ): T {
+    /* eslint-enable @typescript-eslint/no-unused-vars */
     if (err || !user) {
       throw new UnauthorizedException('No autorizado');
     }

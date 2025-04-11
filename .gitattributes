@@ -1,0 +1,30 @@
+# Establecer el comportamiento predeterminado, en caso de que las personas no tengan core.autocrlf configurado.
+* text=auto eol=lf
+
+# Declarar explícitamente los archivos de texto que siempre deben normalizarse y convertirse
+# a finales de línea nativos en checkout.
+*.ts text
+*.js text
+*.json text
+*.md text
+*.yml text
+*.yaml text
+*.html text
+*.css text
+*.scss text
+*.less text
+*.svg text
+
+# Denote all files that are truly binary and should not be modified.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.otf binary
+*.zip binary
+*.pdf binary 
