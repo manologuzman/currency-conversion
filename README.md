@@ -122,7 +122,7 @@ Este microservicio permite convertir cantidades de una moneda a otra utilizando 
 Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
 
 ```
-CURRENCY_API_URL=https://api.apilayer.com/currency_data/convert
+CURRENCY_API_URL=https://api.apilayer.com/currency_data
 CURRENCY_API_KEY=your_api_key
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRATION=3600
