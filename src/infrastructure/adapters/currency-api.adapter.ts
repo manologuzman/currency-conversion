@@ -39,16 +39,16 @@ export class CurrencyApiAdapter implements CurrencyConversionRepository {
 
       const response = await axios.get<CurrencyApiResponse>(apiUrl, {
         params: {
-          from: sourceCurrency,
-          to: destinationCurrency,
-          amount,
-        },
-        headers: {
-          apikey: apiKey,
+          access_key: apiKey,
+          // base: sourceCurrency, // `No se envia por que el api tiene limite de uso`
+          symbols: destinationCurrency,
+          // amount, // `No se envia por que el api tiene limite de uso`
         },
       });
 
       const data = response.data;
+
+      console.log(data);
 
       if (!data.success) {
         throw new ExternalApiException(data.error?.info || 'Error desconocido');
