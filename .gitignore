@@ -9,9 +9,9 @@ yarn-error.log
 /build
 
 # Variables de entorno
-.env
-.env.*
-!.env.example
+# .env
+# .env.*
+# !.env.example
 
 # Archivos de sistema
 .DS_Store
