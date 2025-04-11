@@ -1,0 +1,14 @@
+{
+  "name": "API de Conversión de Monedas BBVA",
+  "language": "es-ES",
+  "theme": "material",
+  "hideGenerator": true,
+  "disableSourceCode": false,
+  "disableCoverage": false,
+  "disablePrivate": false,
+  "disableInternal": false,
+  "disableLifeCycleHooks": false,
+  "disableProtected": false,
+  "disableGraph": false,
+  "output": "documentation"
+} 
