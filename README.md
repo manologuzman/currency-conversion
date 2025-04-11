@@ -112,6 +112,18 @@ La documentación de la API está disponible en Swagger UI:
 http://localhost:3000/api
 ```
 
+Generar token de acceso a API:
+
+```
+http://localhost:3000/token-generator.html
+```
+
+La documentación de la API  y arquitectura
+
+```
+http://localhost:3000/documentation
+```
+
 ## Arquitectura
 
 El proyecto sigue una arquitectura hexagonal (puertos y adaptadores) con tres capas principales:
