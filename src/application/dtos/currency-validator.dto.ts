@@ -8,7 +8,7 @@ import {
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotNumber } from '../validators/is-not-number.validator';
 
-export class ConvertCurrencyDto {
+export class CurrencyValidatorDto {
   @ApiProperty({
     description: 'Monto a convertir',
     example: 100,
@@ -22,12 +22,12 @@ export class ConvertCurrencyDto {
     description: 'Moneda de origen (código ISO 4217)',
     example: 'USD',
   })
-  @IsNotNumber({
-    message: 'La moneda de origen no debe contener numeros',
-  })
   @IsString()
   @IsNotEmpty()
   @Length(3, 3)
+  @IsNotNumber({
+    message: 'La moneda de origen no debe contener solo dígitos',
+  })
   readonly sourceCurrency: string;
 
   @ApiProperty({
@@ -38,7 +38,7 @@ export class ConvertCurrencyDto {
   @IsNotEmpty()
   @Length(3, 3)
   @IsNotNumber({
-    message: 'La moneda de destino no debe contener numeros',
+    message: 'La moneda de destino no debe contener solo dígitos',
   })
   readonly destinationCurrency: string;
 }

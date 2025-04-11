@@ -37,6 +37,15 @@ export class CurrencyApiAdapter implements CurrencyConversionRepository {
         );
       }
 
+      const validSource = !/^[A-Za-z]+$/.test(sourceCurrency);
+      const validDestionation = !/^[A-Za-z]+$/.test(destinationCurrency);
+
+      if (validSource == true || validDestionation === true) {
+        throw new ExternalApiException(
+          'El tipo de Currency debe ser de typo String y no contener numeros',
+        );
+      }
+
       const response = await axios.get<CurrencyApiResponse>(apiUrl, {
         params: {
           access_key: apiKey,
