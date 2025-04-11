@@ -31,6 +31,15 @@ export class CurrencyConversionService {
       );
     }
 
+    const validSource = !/^[A-Za-z]+$/.test(sourceCurrency);
+    const validDestionation = !/^[A-Za-z]+$/.test(destinationCurrency);
+
+    if (validSource == true || validDestionation === true) {
+      throw new CurrencyConversionException(
+        'La moneda de destino debe ser un código ISO 4217 válido (3 caracteres)',
+      );
+    }
+
     try {
       return await this.currencyConversionRepository.convert(
         amount,
